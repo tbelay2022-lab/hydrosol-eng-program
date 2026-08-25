@@ -1,18 +1,17 @@
+"use client";
+
 import Link from "next/link";
 
-export default function Nav({ prev, next }) {
+interface NavProps {
+  prev?: string;
+  next?: string;
+}
+
+export default function Nav({ prev, next }: NavProps) {
   return (
-    <div style={{ marginTop: "2rem", display: "flex", gap: "1rem" }}>
-      {prev && (
-        <Link href={prev}>
-          <button>← Previous</button>
-        </Link>
-      )}
-      {next && (
-        <Link href={next}>
-          <button>Next →</button>
-        </Link>
-      )}
-    </div>
+    <nav style={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
+      {prev ? <Link href={prev}>← Previous</Link> : <span />}
+      {next ? <Link href={next}>Next →</Link> : <span />}
+    </nav>
   );
 }
